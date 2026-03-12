@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Sidra's Birthday Surprise 💖</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+text-align:center;
+background:linear-gradient(45deg,#ff9a9e,#fad0c4,#fbc2eb);
+color:white;
+overflow:hidden;
+}
+
+h1{
+margin-top:120px;
+font-size:55px;
+}
+
+button{
+padding:15px 35px;
+font-size:20px;
+border:none;
+border-radius:30px;
+background:white;
+color:#ff4b6e;
+cursor:pointer;
+margin-top:20px;
+}
+
+button:hover{
+background:#ffe3ea;
+}
+
+#text{
+font-size:24px;
+margin-top:30px;
+max-width:650px;
+margin-left:auto;
+margin-right:auto;
+min-height:120px;
+}
+
+.balloon{
+position:absolute;
+font-size:35px;
+animation:float 10s linear infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(100vh);}
+100%{transform:translateY(-120vh);}
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>🎉 Happy Birthday 🎂</h1>
+<h2>Sidra 💖</h2>
+
+<div id="text"></div>
+
+<button onclick="next()">Start Your Surprise ✨</button>
+
+<audio id="music">
+<source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+let step=0;
+
+const messages=[
+
+"Hey Sidra 💖",
+
+"I made this little surprise just for you ✨",
+
+"Because today is not just any day...",
+
+"It's the birthday of someone very special 🎂",
+
+"Lovee youu baccha 💖",
+
+"My dearest soul and my favorite human.",
+
+"You make the world brighter just by being in it ✨. I need youu girll, you are my everything",
+
+"I'm so grateful to have you in my life. I thank allah and your parents for giving me my world. ",
+
+"Happy Birthday Sidra 🎂💖, You are a part of my soul"
+
+];
+
+function typeText(text){
+
+let i=0;
+document.getElementById("text").innerHTML="";
+
+let typing=setInterval(function(){
+
+if(i<text.length){
+document.getElementById("text").innerHTML+=text.charAt(i);
+i++;
+}else{
+clearInterval(typing);
+}
+
+},40);
+
+}
+
+function next(){
+
+if(step==0){
+document.getElementById("music").play();
+}
+
+if(step<messages.length){
+
+typeText(messages[step]);
+step++;
+
+}else{
+
+confetti();
+typeText("🎂 Make a wish Sidra! 🎂");
+
+}
+
+}
+
+function confetti(){
+
+for(let i=0;i<120;i++){
+
+let conf=document.createElement("div");
+
+conf.innerHTML="🎉";
+
+conf.style.position="absolute";
+conf.style.left=Math.random()*100+"vw";
+conf.style.top="-10px";
+conf.style.fontSize="25px";
+conf.style.animation="fall 3s linear";
+
+document.body.appendChild(conf);
+
+setTimeout(()=>conf.remove(),3000);
+
+}
+
+}
+
+for(let i=0;i<15;i++){
+
+let b=document.createElement("div");
+b.className="balloon";
+b.innerHTML="🎈";
+
+b.style.left=Math.random()*100+"vw";
+b.style.animationDuration=(6+Math.random()*6)+"s";
+
+document.body.appendChild(b);
+
+}
+
+</script>
+
+</body>
+</html>
